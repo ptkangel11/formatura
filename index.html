@@ -55,23 +55,31 @@
   </form>
 
   <script>
-    document.getElementById("rsvp-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      
-      try {
-        const response = await fetch("https://docs.google.com/forms/d/1VJ2T4T_RBIRFZuXZvihaQaipo0oNScnILC99Go0lXgs/formResponse", {
-          method: "POST",
-          mode: "no-cors",
-          body: new FormData(e.target)
-        });
-        
-        alert("Resposta enviada com sucesso!");
-        e.target.reset();
-      } catch (error) {
-        console.error("Erro:", error);
-        alert("Erro ao enviar. Tente novamente.");
+  document.getElementById("rsvp-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    // Formata os dados manualmente
+    const formData = new URLSearchParams();
+    formData.append('entry.2110078965', document.querySelector('[name="entry.2110078965"]').value);
+    formData.append('entry.589766979', document.querySelector('[name="entry.589766979"]').value);
+    formData.append('entry.1324250454', document.querySelector('[name="entry.1324250454"]').value);
+
+    fetch("https://docs.google.com/forms/d/1VJ2T4T_RBIRFZuXZvihaQaipo0oNScnILC99Go0lXgs/formResponse", {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
       }
+    })
+    .then(() => {
+      alert('Resposta enviada com sucesso!');
+      e.target.reset();
+    })
+    .catch(error => {
+      console.error('Erro:', error);
+      alert('Erro ao enviar. Tente novamente.');
     });
-  </script>
+  });
+</script>
 </body>
 </html>
