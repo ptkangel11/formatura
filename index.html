@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="referrer" content="no-referrer-when-downgrade">
   <title>Confirmação de Presença - Formatura de Medicina</title>
   <style>
     body {
@@ -44,9 +43,9 @@
 <body>
   <h1>Confirme sua presença!</h1>
   <form id="rsvp-form">
-    <input type="text" name="entry.2110078965" placeholder="Nome completo" required />
-    <input type="email" name="entry.589766979" placeholder="Seu e-mail" required />
-    <select name="entry.1324250454" required>
+    <input type="text" name="nome" placeholder="Nome completo" required />
+    <input type="email" name="email" placeholder="Seu e-mail" required />
+    <select name="presenca" required>
       <option value="">Você vai à formatura?</option>
       <option value="Sim">Sim</option>
       <option value="Não">Não</option>
@@ -55,64 +54,37 @@
     <div id="mensagem"></div>
   </form>
 
-  <form id="rsvp-form">
-  <input type="text" name="entry.2110078965" placeholder="Nome completo" required />
-  <input type="email" name="entry.589766979" placeholder="Seu e-mail" required />
-  <select name="entry.1324250454" required>
-    <option value="">Você vai à formatura?</option>
-    <option value="Sim">Sim</option>
-    <option value="Não">Não</option>
-  </select>
-  <button type="submit">Confirmar presença</button>
-  <div id="mensagem"></div>
-</form>
-
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-<script>
-  document.getElementById("rsvp-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-    
-    // Criar um formulário temporário
-    const tempForm = document.createElement("form");
-    tempForm.action = "https://docs.google.com/forms/d/1VJ2T4T_RBIRFZuXZvihaQaipo0oNScnILC99Go0lXgs/formResponse";
-    tempForm.method = "POST";
-    tempForm.target = "hidden_iframe";
-    tempForm.style.display = "none";
-    
-    // Copiar os valores do formulário original
-    const nome = document.querySelector('[name="entry.2110078965"]').value;
-    const email = document.querySelector('[name="entry.589766979"]').value;
-    const presenca = document.querySelector('[name="entry.1324250454"]').value;
-    
-    // Criar e adicionar os campos
-    const inputNome = document.createElement("input");
-    inputNome.name = "entry.2110078965";
-    inputNome.value = nome;
-    tempForm.appendChild(inputNome);
-    
-    const inputEmail = document.createElement("input");
-    inputEmail.name = "entry.589766979";
-    inputEmail.value = email;
-    tempForm.appendChild(inputEmail);
-    
-    const inputPresenca = document.createElement("input");
-    inputPresenca.name = "entry.1324250454";
-    inputPresenca.value = presenca;
-    tempForm.appendChild(inputPresenca);
-    
-    // Adicionar o formulário ao documento, enviar e remover
-    document.body.appendChild(tempForm);
-    tempForm.submit();
-    
-    document.getElementById("mensagem").textContent = "Obrigado! Sua resposta foi enviada com sucesso.";
-    document.getElementById("rsvp-form").reset();
-    
-    setTimeout(() => {
-      document.getElementById("mensagem").textContent = "";
-    }, 3000);
-  });
-</script>
-
+  <script>
+    document.getElementById("rsvp-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // URL do seu Google Apps Script Web App
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKHdUQGCRgYbL8P2nTnhrPhuzG-wP_85_xWWUrEIMpyPdH5rUZPS3XPkdyerGMrLepow/exec";
+      
+      // Obter os dados do formulário
+      const formData = new FormData();
+      formData.append('nome', document.querySelector('[name="nome"]').value);
+      formData.append('email', document.querySelector('[name="email"]').value);
+      formData.append('presenca', document.querySelector('[name="presenca"]').value);
+      
+      // Mostrar mensagem de carregamento
+      document.getElementById("mensagem").textContent = "Enviando...";
+      
+      // Enviar os dados usando fetch
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("mensagem").textContent = "Obrigado! Sua resposta foi enviada com sucesso.";
+        document.getElementById("rsvp-form").reset();
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        document.getElementById("mensagem").textContent = "Houve um erro ao enviar. Tente novamente.";
+      });
+    });
+  </script>
 </body>
 </html>
