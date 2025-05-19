@@ -72,21 +72,40 @@
     <div id="mensagem" class="success-message"></div>
   </div>
 
-  <script>
-    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+ <script>
+  document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-      // Simulação de envio (ex: enviar para Google Forms ou backend externo)
-      const nome = document.getElementById('nome').value;
-      const email = document.getElementById('email').value;
-      const confirmacao = document.getElementById('confirmacao').value;
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+    const confirmacao = document.getElementById('confirmacao').value;
 
-      // Exibe mensagem de sucesso
-      document.getElementById('mensagem').textContent = `Obrigado, ${nome}! Sua resposta foi registrada.`;
-      
-      // Limpa o formulário
-      this.reset();
+    fetch("https://script.google.com/macros/s/AKfycbzdR54V0Dt25jWwboj3Qj3pimKNrCIGYGcVjaIUrIygz27h3xhxCPnu_-OvWxN5Q5uoXw/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome: nome,
+        email: email,
+        confirmacao: confirmacao
+      }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('mensagem').textContent = `Obrigado, ${nome}! Sua presença foi registrada.`;
+        document.getElementById('rsvp-form').reset();
+      } else {
+        document.getElementById('mensagem').textContent = `Erro ao enviar. Tente novamente.`;
+      }
+    })
+    .catch(error => {
+      document.getElementById('mensagem').textContent = `Erro na conexão.`;
+      console.error("Erro:", error);
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
