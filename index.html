@@ -3,109 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Confirmação de Presença - Formatura Medicina</title>
+  <title>Confirmação de Presença - Formatura de Medicina</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f4f8;
-      color: #333;
-      padding: 20px;
-      text-align: center;
-    }
-    .container {
-      background: white;
-      max-width: 500px;
-      margin: auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      color: #2c3e50;
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f2f2f2;
     }
     form {
-      margin-top: 20px;
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    input, select, button {
+    input, select {
       width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 5px;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
       border: 1px solid #ccc;
-      font-size: 16px;
     }
     button {
-      background-color: #27ae60;
+      padding: 0.7rem 1rem;
+      background: #2e7d32;
       color: white;
       border: none;
+      border-radius: 0.5rem;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #219150;
-    }
-    .success-message {
-      color: green;
+    #mensagem {
+      margin-top: 1rem;
       font-weight: bold;
-      margin-top: 15px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Confirmação de Presença</h1>
-    <p>Formatura de Medicina - Turma 2025</p>
-    <p>Data: 20 de Dezembro de 2025<br>
-       Local: Teatro Municipal<br>
-       Horário: 19h</p>
+  <h1>Confirme sua presença!</h1>
+  <form id="rsvp-form">
+    <input type="text" name="entry.2110078965" placeholder="Nome completo" required />
+    <input type="email" name="entry.589766979" placeholder="Seu e-mail" required />
+    <select name="entry.548815198" required>
+      <option value="">Você vai à formatura?</option>
+      <div>
+        <label>
+          <input type="radio" name="entry.548815198" value="Sim" required> Sim
+        </label>
+        <label>
+          <input type="radio" name="entry.548815198" value="Não" required> Não
+        </label>
+    </div>
+    </select>
+    <button type="submit">Confirmar presença</button>
+    <div id="mensagem"></div>
+  </form>
 
-    <form id="rsvp-form">
-      <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
-      <input type="email" id="email" name="email" placeholder="Seu e-mail" required />
-      <select id="confirmacao" name="confirmacao" required>
-        <option value="">Confirma presença?</option>
-        <option value="Sim">Sim</option>
-        <option value="Não">Não</option>
-      </select>
-      <button type="submit">Enviar</button>
-    </form>
+  <script>
+    document.getElementById("rsvp-form").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-    <div id="mensagem" class="success-message"></div>
-  </div>
+      const form = e.target;
+      const data = new FormData(form);
 
- <script>
-  document.getElementById('rsvp-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+      fetch("https://docs.google.com/forms/d/e/1VJ2T4T_RBIRFZuXZvihaQaipo0oNScnILC99Go0lXgs/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: data
+      });
 
-    const nome = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const confirmacao = document.getElementById('confirmacao').value;
-
-    fetch("https://script.google.com/macros/s/AKfycbzdR54V0Dt25jWwboj3Qj3pimKNrCIGYGcVjaIUrIygz27h3xhxCPnu_-OvWxN5Q5uoXw/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nome: nome,
-        email: email,
-        confirmacao: confirmacao
-      }),
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        document.getElementById('mensagem').textContent = `Obrigado, ${nome}! Sua presença foi registrada.`;
-        document.getElementById('rsvp-form').reset();
-      } else {
-        document.getElementById('mensagem').textContent = `Erro ao enviar. Tente novamente.`;
-      }
-    })
-    .catch(error => {
-      document.getElementById('mensagem').textContent = `Erro na conexão.`;
-      console.error("Erro:", error);
+      document.getElementById("mensagem").textContent = "Obrigado! Sua resposta foi enviada com sucesso.";
+      form.reset();
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
