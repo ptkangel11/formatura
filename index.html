@@ -1,106 +1,117 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Confirmação de Presença - Formatura de Medicina</title>
-  <style>
-    /* Estilo adaptado do index.html */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-
-    body {
-      align-items: center;
-      background-color: transparent;
-      display: flex;
-      font-family: -apple-system, 
-        BlinkMacSystemFont, 
-        "Segoe UI", 
-        Roboto, 
-        Oxygen-Sans, 
-        Ubuntu, 
-        Cantarell, 
-        "Helvetica Neue", 
-        sans-serif;
-      flex-direction: column;
-      padding: 2rem;
-    }
-
-    h1 {
-      font-weight: normal;
-      letter-spacing: .125rem;
-      text-transform: uppercase;
-      color: white;
-      margin-bottom: 2rem;
-    }
-
-    /* Navegação */
-    nav {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      transition: background-color 0.3s;
-    }
-
-    nav a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DR. PABLO BERINI LEMGRUBER - MEDICINA 2025</title>
     
-    /* Iframe para o formulário */
-    #form-container {
-      width: 100%;
-      max-width: 600px;
-      height: 400px;
-      margin: 2rem auto;
-    }
+    <!-- Links para fontes -->
+    <link href="//cdn2.editmysite.com/fonts/Poppins/font.css?2" rel="stylesheet" type="text/css">
+    <link href="//cdn2.editmysite.com/fonts/Oswald/font.css?2" rel="stylesheet" type="text/css">
+    <link href="//cdn2.editmysite.com/fonts/Roboto/font.css?2" rel="stylesheet" type="text/css">
+    <link href="//cdn2.editmysite.com/fonts/Actor/font.css?2" rel="stylesheet" type="text/css">
+    <link href="//cdn2.editmysite.com/fonts/Quicksand/font.css?2" rel="stylesheet" type="text/css">
     
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 1rem;
-      background: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-  </style>
+    <!-- Link para o CSS principal -->
+    <link rel="stylesheet" type="text/css" href="main_style.css">
+    
+    <!-- Link para seu CSS personalizado -->
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-  <h1>DR. PABLO BERINI LEMGRUBER</h1>
-  <h1>MEDICINA 2025</h1>
-  
-  <div id="form-container">
-    <iframe src="formulario.html" title="Formulário de Presença"></iframe>
-  </div>
-  
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="presence.html">Presence</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="localization.html">Localization</a>
-  </nav>
-  
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="presence.html">Presence</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="localization.html">Localization</a>
-  </nav>
+<body class="header-page wsite-theme-dark">
+    <div class="wrapper">
+        <div class="page-content">
+            <div id="background">
+                <div id="header">
+                    <div class="container">
+                        <div id="logo">
+                            <span class="wsite-logo">
+                                <span class="wsite-title-placeholder">&nbsp;</span>
+                                <span style="display:none">HOME PRESENCE GALLERY LOCALIZATION</span>
+                            </span>
+                        </div>
+                        <div id="nav-handle">
+                            <div class="hamburger"><span></span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Seção do cabeçalho com imagem de fundo -->
+                <div class="wsite-elements wsite-header-elements">
+                    <div class="wsite-section-wrap">
+                        <div class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 750px; background-image: url('files/768715757.jpg'); background-repeat: no-repeat; background-position: 50% 72.74%; background-size: cover; background-color: transparent;">
+                            <div class="wsite-section-content">
+                                <div id="banner-wrap">
+                                    <div id="gradient">
+                                        <div class="container">
+                                            <div id="banner">
+                                                <div class="wsite-section-elements">
+                                                    <h2 class="wsite-content-title" style="text-align:left;">
+                                                        &nbsp; &nbsp; &nbsp; &nbsp;
+                                                        <font size="6">DR. PABLO BERINI LEMGRUBER</font>
+                                                        <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                                                        
+                                                        <font size = "5" color="#001d35">&nbsp;</font>MEDICINA 2025&nbsp;
+                                                        
+                                                    </h2>
+                                                    
+                                                    <!-- Contagem regressiva -->
+                                                    <div class="countdown-container">
+                                                        <div id="countdown">
+                                                            <ul>
+                                                                <li><span id="days"></span>dia</li>
+                                                                <li><span id="hours"></span>horas</li>
+                                                                <li><span id="minutes"></span>minutos</li>
+                                                                <li><span id="seconds"></span>segundos</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Menu de navegação -->
+            <div id="nav" class="nav">
+                <div class="nav-header">
+                    <div class="logo"></div>
+                    <div class="hamburger wsite-button-highlight"><span></span></div>
+                </div>
+                <div class="w-navpane">
+                    <div class="nav-wrap">
+                        <ul class="wsite-menu-default">
+                            <li id="active" class="wsite-menu-item-wrap">
+                                <a href="/" class="wsite-menu-item">Home</a>
+                            </li>
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/presence.html" class="wsite-menu-item">Presence</a>
+                            </li>
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/gallery.html" class="wsite-menu-item">Gallery</a>
+                            </li>
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/localization.html" class="wsite-menu-item">Localization</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="files/theme/files/jquery.min.js"></script>
+    <script src="files/theme/files/plugins.js"></script>
+    <script src="files/theme/files/jquery.trend.js"></script>
+    <script src="files/theme/files/jquery.revealer.js"></script>
+    <script src="files/theme/files/flickity.pkgd.min.js"></script>
+    <script src="files/theme/files/custom.js"></script>
+    <script src="countdown.js"></script>
 </body>
 </html>

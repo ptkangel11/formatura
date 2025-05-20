@@ -1,0 +1,86 @@
+/* Estilos personalizados para sobrescrever o tema principal */
+
+/* Estilos para a contagem regressiva */
+#countdown {
+  color: white;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  transform: scale(0.8); /* Reduz todo o contador para 80% do tamanho original */
+  transform-origin: center top; /* Mantém o alinhamento a partir do topo */
+}
+
+#countdown ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 0;
+  gap: 10px; /* Reduz o espaço entre os elementos */
+}
+
+#countdown li {
+  display: inline-block;
+  font-size: 1em; /* Reduzido de 1.3em */
+  list-style-type: none;
+  padding: 0.3em; /* Reduzido de 0.5em */
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+}
+
+#countdown li span {
+  display: block;
+  font-size: 2.5rem; /* Reduzido de 3.5rem */
+  color: white;
+  margin-bottom: 0.05em; /* Reduzido de 0.1em */
+}
+
+/* Estilos responsivos para o contador */
+@media (max-width: 768px) {
+  #countdown {
+    transform: scale(0.7); /* Ainda menor em tablets */
+  }
+  
+  #countdown li {
+    font-size: 0.9em;
+    padding: 0.2em;
+  }
+  
+  #countdown li span {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #countdown {
+    transform: scale(0.6); /* Muito menor em smartphones */
+  }
+  
+  #countdown li {
+    font-size: 0.8em;
+    padding: 0.1em;
+  }
+  
+  #countdown li span {
+    font-size: 1.8rem;
+  }
+}
+
+/* Estilos para o fundo */
+.wsite-section-bg-image {
+  opacity: 0.78;
+}
+
+/* Estilos para o texto do cabeçalho */
+.wsite-content-title {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+
+/* Estilos para o tema escuro */
+.wsite-theme-dark {
+  background-color: #000000;
+  color: white;
+}
