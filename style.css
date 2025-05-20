@@ -36,6 +36,11 @@
   margin-bottom: 0.05em; /* Reduzido de 0.1em */
 }
 
+.wsite-header-section.wsite-section-bg-image::before {
+  z-index: -2 !important; /* Garante que fique atrás do conteúdo */
+  pointer-events: none !important;
+}
+
 .wsite-section-bg-image {
   background-size: cover; /* Mantém para desktop */
   background-position: center center;

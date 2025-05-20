@@ -125,34 +125,48 @@
         .presence-form-container {
             position: relative;
             z-index: 100;
+             isolation: isolate; /* Cria novo contexto de empilhamento */
+            pointer-events: auto !important;
         }
+        .formulario-container {
+            position: relative;
+            z-index: 9999; /* Valor alto para garantir visibilidade */
+            }
+
+            .formulario-container input, 
+            .formulario-container select, 
+            .formulario-container button {
+            position: relative;
+            z-index: 10000; /* Ainda maior para os campos */
+            }
     </style>
 <!-- 
     <script src="ajax_navigation.js"></script> -->
 </head>
 <body class="header-page wsite-theme-dark">
-    <div class="wrapper">
-        <div class="page-content">
-            <div id="background">
+    <div class="wrapper" style="position: static; z-index: auto; pointer-events: none;">
+        <div class="page-content" style="z-index: auto; position: relative;">
+            <div id="background" style="z-index: -1; position: fixed;">
                 <div id="header">
-                    <div class="container">
+                    
+                    <!-- <div class="container">
                         <div id="logo">
                             <span class="wsite-logo">
                                 <span class="wsite-title-placeholder">&nbsp;</span>
                                 <span style="display:none">HOME PRESENCE GALLERY LOCALIZATION</span>
                             </span>
                         </div>
-                        <!-- <div id="nav-handle">
+                        <div id="nav-handle">
                             <div class="hamburger"><span></span></div>
                         </div> -->
-                    </div>
+                    <!-- </div> -->
                 </div>
                 
                 <!-- Seção do cabeçalho com imagem de fundo -->
                 <div class="wsite-elements wsite-header-elements">
                     <div class="wsite-section-wrap">
                         <div class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 750px; background-image: url('files/768715757.jpg'); background-repeat: no-repeat; background-position: 50% 72.74%; background-size: cover; background-color: transparent;">
-                            <div class="wsite-section-content">
+                            <div class="wsite-section-content" style="position: static !important; z-index: auto !important;">
                                 <div id="banner-wrap">
                                     <div id="gradient">
                                         <div class="container">
@@ -218,30 +232,6 @@
     <script src="files/theme/files/flickity.pkgd.min.js"></script>
     <script src="files/theme/files/custom.js"></script>
     
-    <style>
-        /* Garante que o formulário fique acima de outros elementos */
-        .presence-form-container {
-            position: relative;
-            z-index: 1000; /* Valor alto para garantir que fique acima */
-        }
-        
-        /* Remove os z-index individuais dos elementos do formulário */
-        #rsvp-form input, 
-        #rsvp-form select, 
-        #rsvp-form button {
-            position: static; /* ou relative, mas sem z-index */
-        }
-        
-        /* Garante que o container do formulário seja clicável */
-        /* #banner-wrap, #gradient, #banner {
-            /* pointer-events: none; */
-        
-        
-        .presence-form-container, 
-        .presence-form-container * {
-            pointer-events: auto;
-        }
-    </style>
 
     <!-- Script específico para o formulário -->
      <script>

@@ -89,6 +89,17 @@
  html { width: 100%; height: 100%; }
  body { font-family: "Poppins", sans-serif; width: 100%; height: 100%; background: #171717; color: rgba(237,237,237,0.7); font-size: 20px; line-height: 1.25; font-weight: 400; -webkit-font-smoothing: antialiased; -webkit-overflow-scrolling: touch; }
  .wrapper { position: relative; width: 100%; height: 100%; }
+ .wrapper {
+  position: static;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: visible !important;
+  pointer-events: none !important; /* Permite interação através do wrapper */
+}
+.wrapper * {
+  pointer-events: auto; /* Reativa eventos nos elementos filhos */
+}
  .container, .wsite-footer { max-width: 1000px; padding: 0 2em; margin: 0 auto; width: 100%; box-sizing: border-box; }
  #header, #banner-wrap, #main, #footer { width: 100%; }
  #main { overflow-x: hidden; }
