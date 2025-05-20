@@ -382,6 +382,35 @@
       observer.observe(target, config);
     },
   }
+$(document).ready(function() {
+    // Toggle menu mobile quando o hamburger é clicado
+    $('#nav-handle').click(function() {
+        $('#header-nav').toggleClass('mobile-visible');
+        $('.hamburger').toggleClass('active');
+    });
+    
+    // Atualiza a classe active no menu
+    $('.header-link').click(function() {
+        $('.header-menu-item').removeClass('active');
+        $(this).parent().addClass('active');
+        
+        // Se estiver no mobile, fecha o menu
+        if ($(window).width() <= 768) {
+            $('#header-nav').removeClass('mobile-visible');
+            $('.hamburger').removeClass('active');
+        }
+    });
+    
+    // Atualiza o menu com base na URL atual
+    var currentPath = window.location.pathname;
+    $('.header-link').each(function() {
+        if ($(this).attr('href') === currentPath) {
+            $('.header-menu-item').removeClass('active');
+            $(this).parent().addClass('active');
+        }
+    });
+});
+
 
 	$(document).ready(function() {
 

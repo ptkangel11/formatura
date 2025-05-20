@@ -171,6 +171,7 @@
  @media (min-width: 1400px) {
  .wsite-cart-header { padding: 32px 2em; }
  }
+
  .wsite-cart-header::after { background: -moz-linear-gradient(top,#000000 0%,rgba(0,0,0,0) 100%); background: -webkit-linear-gradient(top,#000000 0%,rgba(0,0,0,0) 100%); background: linear-gradient(to bottom,#000000 0%,rgba(0,0,0,0) 100%); position: absolute; top: 100%; left: 0; width: 100%; height: 40px; content: ""; }
  .minicart-close { background-color: transparent !important; color: #2a2a2a !important; }
  .minicart-close:hover { box-shadow: 0 0 0 2px rgba(29,29,29,0.2) inset; background-color: transparent !important; }
@@ -573,13 +574,50 @@
  .wsite-com-category-subcategory-name { top: 0; }
  #wsite-com-product-info { margin-left: 0; }
  #wsite-com-product-info-inner { padding-top: 20px; }
- }
 
-div.paragraph ul, div.paragraph ol { padding-left: 3em !important; margin: 5px 0 !important; }
-div.paragraph li { padding-left: 5px !important; margin: 3px 0 0 !important; }
-div.paragraph ul, div.paragraph ul li { list-style: disc outside !important; }
-div.paragraph ol, div.paragraph ol li { list-style: decimal outside !important; }
+/* Correção para garantir que o formulário de presença seja sempre editável e visível */
+.presence-form-container input,
+.presence-form-container select,
+.presence-form-container textarea,
+.presence-form-container input[type="text"],
+.presence-form-container input[type="email"],
+.presence-form-container button {
+  background: #fff !important;
+  color: #333 !important;
+  border: 1px solid #ccc !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  z-index: 1001 !important;
+  position: relative !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transition: none !important;
+}
 
-.product-grid .product-grid-image .product-grid__image-sale-banner-wrapper {background: #2a2a2a;}
-#wsite-com-category-product-group .category__image-sale-banner-wrapper {background: #2a2a2a;}
-#wsite-search-product-results .wsite-search-product-result .wsite-search-product-image-container .search__image-sale-banner-wrapper {background: #2a2a2a;}
+.presence-form-container input:disabled,
+.presence-form-container select:disabled,
+.presence-form-container textarea:disabled {
+  background: #f5f5f5 !important;
+  color: #aaa !important;
+  pointer-events: none !important;
+  opacity: 0.7 !important;
+}
+
+/* Remove qualquer estilo de input do tema dentro do formulário de presença */
+.presence-form-container .input-style,
+.presence-form-container .wsite-form-input,
+.presence-form-container .wsite-search-element-input {
+  all: unset !important;
+  background: #fff !important;
+  color: #333 !important;
+  border: 1px solid #ccc !important;
+  padding: 0.8rem !important;
+  margin-bottom: 1.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 1rem !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  border-radius: 0.5rem !important;
+}

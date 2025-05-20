@@ -36,6 +36,92 @@
   margin-bottom: 0.05em; /* Reduzido de 0.1em */
 }
 
+.wsite-section-bg-image {
+  background-size: cover; /* Mantém para desktop */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.78;
+}
+
+@media (max-width: 768px) and (orientation: portrait) {
+  .wsite-section-bg-image {
+    height: 100%;
+    background-size: 100% auto; /* Largura fixa em 100%, altura automática */
+    background-position: top center; /* Alinha ao topo */
+  }
+}
+
+/* Estilo para o menu no header */
+#header-nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-menu-item {
+    margin: 0 15px;
+}
+
+.header-link {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.header-link:hover {
+    color: #cccccc;
+}
+
+.header-menu-item.active .header-link {
+    color: #cccccc;
+    border-bottom: 2px solid #cccccc;
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+    #header-nav {
+        display: none; /* Esconde o menu em dispositivos móveis */
+    }
+    
+    /* Aqui você pode adicionar um menu mobile que aparece quando o hamburger é clicado */
+    #header-nav.mobile-visible {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+    }
+    
+    .header-menu {
+        flex-direction: column;
+        padding: 20px 0;
+    }
+    
+    .header-menu-item {
+        margin: 10px 20px;
+    }
+}
+
+
 /* Estilos responsivos para o contador */
 @media (max-width: 768px) {
   #countdown {
@@ -54,7 +140,7 @@
 
 @media (max-width: 480px) {
   #countdown {
-    transform: scale(0.6); /* Muito menor em smartphones */
+    transform: scale(0.3); /* Muito menor em smartphones */
   }
   
   #countdown li {

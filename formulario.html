@@ -1,116 +1,282 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Formulário de Presença</title>
-  <style>
-    body {
-      font-family: -apple-system, 
-        BlinkMacSystemFont, 
-        "Segoe UI", 
-        Roboto, 
-        Oxygen-Sans, 
-        Ubuntu, 
-        Cantarell, 
-        "Helvetica Neue", 
-        sans-serif;
-      padding: 1rem;
-      background: white;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DR. PABLO BERINI LEMGRUBER - MEDICINA 2025</title>
     
-    form {
-      padding: 1rem;
-      max-width: 100%;
-      margin: auto;
-    }
+    <!-- Links para fontes -->
+    <link href="//cdn2.editmysite.com/fonts/Poppins/font.css?2" rel="stylesheet" type="text/css">
+    <link href="//cdn2.editmysite.com/fonts/Oswald/font.css?2" rel="stylesheet" type="text/css">
+    <link href="//cdn2.editmysite.com/fonts/Roboto/font.css?2" rel="stylesheet" type="text/css">
+    <link href="//cdn2.editmysite.com/fonts/Actor/font.css?2" rel="stylesheet" type="text/css">
+    <link href="//cdn2.editmysite.com/fonts/Quicksand/font.css?2" rel="stylesheet" type="text/css">
     
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: #333;
-    }
+    <!-- Link para o CSS principal -->
+    <link rel="stylesheet" type="text/css" href="main_style.css">
     
-    input, select {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1.5rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
-      font-family: inherit;
-      font-size: 1rem;
-    }
+    <!-- Link para seu CSS personalizado -->
+    <link rel="stylesheet" type="text/css" href="style.css">
     
-    button {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      background: #2e7d32;
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-    
-    button:hover {
-      background: #1b5e20;
-    }
-    
-    #mensagem {
-      margin-top: 1.5rem;
-      font-weight: bold;
-      text-align: center;
-      color: #2e7d32;
-    }
-  </style>
-</head>
-<body>
-  <form id="rsvp-form">
-    <h2>Confirme sua presença!</h2>
-    <input type="text" name="nome" placeholder="Nome completo" required />
-    <input type="email" name="email" placeholder="Seu e-mail" required />
-    <select name="presenca" required>
-      <option value="">Você vai à formatura?</option>
-      <option value="Sim">Sim</option>
-      <option value="Não">Não</option>
-    </select>
-    <button type="submit">Confirmar presença</button>
-    <div id="mensagem"></div>
-  </form>
+    <!-- CSS específico para o formulário -->
+    <style>
+        .presence-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #rsvp-form {
+            padding: 1rem;
+            max-width: 100%;
+            margin: auto;
+        }
+        
+        #rsvp-form h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        #rsvp-form input, #rsvp-form select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #ccc;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        #rsvp-form button {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+        
+        #rsvp-form button:hover {
+            background: #1b5e20;
+        }
+        
+        #mensagem {
+            margin-top: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #2e7d32;
+        }
+            /* Correções para o formulário */
+        #rsvp-form input, 
+        #rsvp-form select {
+            background-color: white !important;
+            color: #333 !important;
+            border: 1px solid #ccc !important;
+            padding: 0.8rem !important;
+            margin-bottom: 1.5rem !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 1rem !important;
+            opacity: 1 !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
 
-  <script>
-    document.getElementById("rsvp-form").addEventListener("submit", function(e) {
-      e.preventDefault();
-      
-      // URL do seu Google Apps Script Web App
-      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKHdUQGCRgYbL8P2nTnhrPhuzG-wP_85_xWWUrEIMpyPdH5rUZPS3XPkdyerGMrLepow/exec";
-      
-      // Obter os dados do formulário
-      const formData = new FormData();
-      formData.append('nome', document.querySelector('[name="nome"]').value);
-      formData.append('email', document.querySelector('[name="email"]').value);
-      formData.append('presenca', document.querySelector('[name="presenca"]').value);
-      
-      // Mostrar mensagem de carregamento
-      document.getElementById("mensagem").textContent = "Enviando...";
-      
-      // Enviar os dados usando fetch
-      fetch(SCRIPT_URL, {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("mensagem").textContent = "Obrigado! Sua resposta foi enviada com sucesso.";
-        document.getElementById("rsvp-form").reset();
-      })
-      .catch(error => {
-        console.error('Erro:', error);
-        document.getElementById("mensagem").textContent = "Houve um erro ao enviar. Tente novamente.";
-      });
-    });
-  </script>
+        #rsvp-form select {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') !important;
+            background-repeat: no-repeat !important;
+            background-position: right 10px center !important;
+        }
+
+        #rsvp-form button {
+            background: #2e7d32 !important;
+            color: white !important;
+            border: none !important;
+            padding: 0.8rem 1rem !important;
+            font-size: 1rem !important;
+            cursor: pointer !important;
+            width: 100% !important;
+            font-family: 'Oswald', sans-serif !important;
+            text-transform: uppercase !important;
+        }
+
+        #rsvp-form button:hover {
+            background: #1b5e20 !important;
+        }
+
+        .presence-form-container {
+            position: relative !important;
+            z-index: 1000 !important;
+        }
+
+        /* Garante que o container do formulário seja clicável */
+        #banner-wrap, #gradient, #banner {
+            /* pointer-events: none !important; */
+        }
+
+        .presence-form-container, 
+        .presence-form-container * {
+            pointer-events: auto !important;
+        }
+    </style>
+
+    <script src="ajax_navigation.js"></script>
+</head>
+<body class="header-page wsite-theme-dark">
+    <div class="wrapper">
+        <div class="page-content">
+            <div id="background">
+                <div id="header">
+                    <div class="container">
+                        <div id="logo">
+                            <span class="wsite-logo">
+                                <span class="wsite-title-placeholder">&nbsp;</span>
+                                <span style="display:none">HOME PRESENCE GALLERY LOCALIZATION</span>
+                            </span>
+                        </div>
+                        <!-- <div id="nav-handle">
+                            <div class="hamburger"><span></span></div>
+                        </div> -->
+                    </div>
+                </div>
+                
+                <!-- Seção do cabeçalho com imagem de fundo -->
+                <div class="wsite-elements wsite-header-elements">
+                    <div class="wsite-section-wrap">
+                        <div class="wsite-section wsite-header-section wsite-section-bg-image" style="height: 750px; background-image: url('files/768715757.jpg'); background-repeat: no-repeat; background-position: 50% 72.74%; background-size: cover; background-color: transparent;">
+                            <div class="wsite-section-content">
+                                <div id="banner-wrap">
+                                    <div id="gradient">
+                                        <div class="container">
+                                            <div id="banner">
+                                                <div class="wsite-section-elements">
+                                                    <!-- FORMULÁRIO CORRIGIDO -->
+                                                    <div class="presence-form-container">
+                                                        <form id="rsvp-form">
+                                                            <h2>Confirme sua presença!</h2>
+                                                            <input type="text" name="nome" placeholder="Nome completo" required />
+                                                            <input type="email" name="email" placeholder="Seu e-mail" required />
+                                                            <select name="presenca" required>
+                                                                <option value="">Você vai à formatura?</option>
+                                                                <option value="Sim">Sim</option>
+                                                                <option value="Não">Não</option>
+                                                            </select>
+                                                            <button type="submit">Confirmar presença</button>
+                                                            <div id="mensagem"></div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>            
+            <!-- Menu de navegação -->
+            <div id="nav" class="nav">
+                <div class="nav-header">
+                    <div class="logo"></div>
+                    <div class="hamburger wsite-button-highlight"><span></span></div>
+                </div>
+                <div class="w-navpane">
+                    <div class="nav-wrap">
+                        <ul class="wsite-menu-default">
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/" class="wsite-menu-item">Home</a>
+                            </li>
+                            <li id="active" class="wsite-menu-item-wrap">
+                                <a href="/presence.html" class="wsite-menu-item">Presence</a>
+                            </li>
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/gallery.html" class="wsite-menu-item">Gallery</a>
+                            </li>
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/localization.html" class="wsite-menu-item">Localization</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="files/theme/files/jquery.min.js"></script>
+    <script src="files/theme/files/plugins.js"></script>
+    <script src="files/theme/files/jquery.trend.js"></script>
+    <script src="files/theme/files/jquery.revealer.js"></script>
+    <script src="files/theme/files/flickity.pkgd.min.js"></script>
+    <script src="files/theme/files/custom.js"></script>
+    
+    <style>
+        /* Garante que o formulário fique acima de outros elementos */
+        .presence-form-container {
+            position: relative;
+            z-index: 1000; /* Valor alto para garantir que fique acima */
+        }
+        
+        /* Remove os z-index individuais dos elementos do formulário */
+        #rsvp-form input, 
+        #rsvp-form select, 
+        #rsvp-form button {
+            position: static; /* ou relative, mas sem z-index */
+        }
+        
+        /* Garante que o container do formulário seja clicável */
+        /* #banner-wrap, #gradient, #banner {
+            /* pointer-events: none; */
+        
+        
+        .presence-form-container, 
+        .presence-form-container * {
+            pointer-events: auto;
+        }
+    </style>
+
+    <!-- Script específico para o formulário -->
+     <script>
+        document.getElementById("rsvp-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKHdUQGCRgYbL8P2nTnhrPhuzG-wP_85_xWWUrEIMpyPdH5rUZPS3XPkdyerGMrLepow/exec";
+            
+            const formData = new FormData();
+            formData.append('nome', document.querySelector('[name="nome"]').value);
+            formData.append('email', document.querySelector('[name="email"]').value);
+            formData.append('presenca', document.querySelector('[name="presenca"]').value);
+            
+            document.getElementById("mensagem").textContent = "Enviando...";
+            
+            fetch(SCRIPT_URL, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("mensagem").textContent = "Obrigado! Sua resposta foi enviada com sucesso.";
+                document.getElementById("rsvp-form").reset();
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                document.getElementById("mensagem").textContent = "Houve um erro ao enviar. Tente novamente.";
+            });
+        });
+    </script>
 </body>
 </html>

@@ -17,6 +17,8 @@
     
     <!-- Link para seu CSS personalizado -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="ajax_navigation.js"></script>
+    
 </head>
 <body class="header-page wsite-theme-dark">
     <div class="wrapper">
@@ -29,10 +31,58 @@
                                 <span class="wsite-title-placeholder">&nbsp;</span>
                                 <span style="display:none">HOME PRESENCE GALLERY LOCALIZATION</span>
                             </span>
-                        </div>
-                        <div id="nav-handle">
+                        </div>        
+        <!-- Nova navegação no header -->
+            <div id="header-nav">
+                <ul class="header-menu">
+                    <li class="header-menu-item active">
+                        <a href="/" class="header-link">HOME</a>
+                    </li>
+                    <li class="header-menu-item">
+                        <a href="/formulario.html" class="header-link">PRESENCE</a>
+                    </li>
+                    <li class="header-menu-item">
+                        <a href="/gallery.html" class="header-link">GALLERY</a>
+                    </li>
+                    <li class="header-menu-item">
+                        <a href="/localization.html" class="header-link">LOCALIZATION</a>
+                    </li>
+                </ul>
+            </div>
+          </div>
+            
+            <!-- Você pode manter o botão hamburger para mobile
+             <div id="nav-handle">
+                <div class="nav-header">
+                    <div class="logo"></div>
+                    <div class="hamburger wsite-button-highlight"><span></span></div>
+                </div>
+                <div class="w-navpane">
+                    <div class="nav-wrap">
+                        <ul class="wsite-menu-default">
+                            <li id="active" class="wsite-menu-item-wrap">
+                                <a href="/" class="wsite-menu-item">Home</a>
+                            </li>
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/presence.html" class="wsite-menu-item">Presence</a>
+                            </li>
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/gallery.html" class="wsite-menu-item">Gallery</a>
+                            </li>
+                            <li class="wsite-menu-item-wrap">
+                                <a href="/localization.html" class="wsite-menu-item">Localization</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+       
+
+                        <!-- <div id="nav-handle">
                             <div class="hamburger"><span></span></div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
@@ -77,7 +127,7 @@
                 </div>
             </div>
             
-            <!-- Menu de navegação -->
+            <!-- Menu de navegação
             <div id="nav" class="nav">
                 <div class="nav-header">
                     <div class="logo"></div>
@@ -103,7 +153,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     
     <!-- JavaScript -->
     <script src="files/theme/files/jquery.min.js"></script>
@@ -113,5 +163,6 @@
     <script src="files/theme/files/flickity.pkgd.min.js"></script>
     <script src="files/theme/files/custom.js"></script>
     <script src="countdown.js"></script>
+    
 </body>
 </html>
