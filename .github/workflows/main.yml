@@ -1,0 +1,60 @@
+title: "DR. PABLO BERINI LEMGRUBER - MEDICINA 2025"
+description: "Site de formatura de Medicina 2025"
+author: "Dr. Pablo Berini Lemgruber"
+email: "seu-email@exemplo.com"
+
+# URL base do site
+url: "https://ptkangel11.github.io"          # Troque pelo seu usuário GitHub
+baseurl: "/formatura"               # Troque pelo nome do seu repositório. Se for user/organization site, deixe em branco: ""
+
+# Tema do GitHub Pages (pode ser ajustado)
+theme: jekyll-theme-primer
+
+# Plugins padrão do GitHub Pages
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+  - jekyll-relative-links
+
+# Configurações de build
+markdown: kramdown
+highlighter: rouge
+
+# Inclua arquivos/pastas que não começam com _ por padrão
+include:
+  - main_style.css
+  - style.css
+  - countdown.js
+  - ajax_navigation.js
+  - files
+
+# Exclua arquivos desnecessários do build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor
+
+# Permalinks (URLs amigáveis)
+permalink: pretty
+
+# Configuração do kramdown (markdown)
+kramdown:
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+# SEO
+seo:
+  type: "website"
+  name: "DR. PABLO BERINI LEMGRUBER - MEDICINA 2025"
+  description: "Site de formatura de Medicina 2025"
+
+# Outros (opcional)
+# paginate: 5
+# paginate_path: "/page:num/"
+
+# Se você quiser definir domínios personalizados:
+# domain: seu-dominio.com
