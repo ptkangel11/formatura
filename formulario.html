@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulário de Presença</title>
+  <style>
+    body {
+      font-family: -apple-system, 
+        BlinkMacSystemFont, 
+        "Segoe UI", 
+        Roboto, 
+        Oxygen-Sans, 
+        Ubuntu, 
+        Cantarell, 
+        "Helvetica Neue", 
+        sans-serif;
+      padding: 1rem;
+      background: white;
+    }
+    
+    form {
+      padding: 1rem;
+      max-width: 100%;
+      margin: auto;
+    }
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    
+    button {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background: #1b5e20;
+    }
+    
+    #mensagem {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+  <form id="rsvp-form">
+    <h2>Confirme sua presença!</h2>
+    <input type="text" name="nome" placeholder="Nome completo" required />
+    <input type="email" name="email" placeholder="Seu e-mail" required />
+    <select name="presenca" required>
+      <option value="">Você vai à formatura?</option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select>
+    <button type="submit">Confirmar presença</button>
+    <div id="mensagem"></div>
+  </form>
+
+  <script>
+    document.getElementById("rsvp-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // URL do seu Google Apps Script Web App
+      const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKHdUQGCRgYbL8P2nTnhrPhuzG-wP_85_xWWUrEIMpyPdH5rUZPS3XPkdyerGMrLepow/exec";
+      
+      // Obter os dados do formulário
+      const formData = new FormData();
+      formData.append('nome', document.querySelector('[name="nome"]').value);
+      formData.append('email', document.querySelector('[name="email"]').value);
+      formData.append('presenca', document.querySelector('[name="presenca"]').value);
+      
+      // Mostrar mensagem de carregamento
+      document.getElementById("mensagem").textContent = "Enviando...";
+      
+      // Enviar os dados usando fetch
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("mensagem").textContent = "Obrigado! Sua resposta foi enviada com sucesso.";
+        document.getElementById("rsvp-form").reset();
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        document.getElementById("mensagem").textContent = "Houve um erro ao enviar. Tente novamente.";
+      });
+    });
+  </script>
+</body>
+</html>
