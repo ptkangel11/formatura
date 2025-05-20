@@ -621,3 +621,50 @@
   pointer-events: auto !important;
   border-radius: 0.5rem !important;
 }
+
+/* Correção máxima para garantir campos editáveis e visíveis no formulário de presença */
+.presence-form-container input,
+.presence-form-container select,
+.presence-form-container textarea,
+.presence-form-container button {
+  all: unset !important;
+  display: block !important;
+  background: #fff !important;
+  color: #333 !important;
+  border: 1px solid #ccc !important;
+  padding: 0.8rem !important;
+  margin-bottom: 1.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 1rem !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  border-radius: 0.5rem !important;
+  z-index: 1001 !important;
+  position: relative !important;
+}
+
+.presence-form-container button {
+  background: #2e7d32 !important;
+  color: #fff !important;
+  font-family: 'Oswald', sans-serif !important;
+  text-transform: uppercase !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  margin-bottom: 0 !important;
+  transition: background 0.3s !important;
+}
+
+.presence-form-container button:hover {
+  background: #1b5e20 !important;
+}
+
+.presence-form-container input:disabled,
+.presence-form-container select:disabled,
+.presence-form-container textarea:disabled {
+  background: #f5f5f5 !important;
+  color: #aaa !important;
+  pointer-events: none !important;
+  opacity: 0.7 !important;
+}
